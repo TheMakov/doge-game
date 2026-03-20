@@ -13,3 +13,4 @@ script = ExtResource("2_0xm2m")
 _maxSpeed = 3.0
 _deccelTime = 0.15
 _accelTime = 0.2
+_minGlideSpeed = 0.3
