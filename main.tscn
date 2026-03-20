@@ -1,12 +1,20 @@
 [gd_scene format=3 uid="uid://cqow47bch5ocs"]
 
+[ext_resource type="Script" uid="uid://dyqker8gxi57a" path="res://scripts/ProjectileMovement.cs" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dwalmy7wswxbg" path="res://scripts/Movement.cs" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://63v52kp3exg8" path="res://scripts/HitProcessor.cs" id="4_lquwl"]
+[ext_resource type="Script" uid="uid://t7l38t2cep62" path="res://scripts/HealthManager.cs" id="5_lquwl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
+radius = 66.05325
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mycd"]
 
 [node name="root" type="Node2D" unique_id=1950932389]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1552440115]
-position = Vector2(1004, 372)
+[node name="Player" type="Sprite2D" parent="." unique_id=1552440115]
+position = Vector2(169.00006, -25.99997)
 scale = Vector2(0.515625, 0.515625)
 texture = ExtResource("1_ig7tw")
 script = ExtResource("2_0xm2m")
@@ -14,3 +22,34 @@ _maxSpeed = 3.0
 _deccelTime = 0.15
 _accelTime = 0.2
 _minGlideSpeed = 0.3
+
+[node name="Hitbox" type="Area2D" parent="Player" unique_id=1950722236]
+script = ExtResource("4_lquwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hitbox" unique_id=167773714]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="HealthManager" type="Node" parent="Player" unique_id=2136956835]
+script = ExtResource("5_lquwl")
+
+[node name="Projectile" type="Area2D" parent="." unique_id=1260423323]
+position = Vector2(-127.99994, -35.99997)
+scale = Vector2(1.745, 1.745)
+script = ExtResource("1_1bvp3")
+_speed = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile" unique_id=1346175630]
+shape = SubResource("CircleShape2D_7mycd")
+
+[node name="ColorRect" type="ColorRect" parent="Projectile" unique_id=438250297]
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 9.0
+color = Color(0.7894353, 0.45950115, 0.24424145, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=523629883]
+position = Vector2(-1, 0)
+
+[connection signal="area_entered" from="Player/Hitbox" to="Player/Hitbox" method="_on_area_entered"]

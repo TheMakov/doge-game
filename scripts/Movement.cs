@@ -46,10 +46,8 @@ public partial class Movement : Godot.Sprite2D
 			steeringForce = 1.0f /_accelTime;
 		}
 		_velocity = _velocity.Lerp(target, steeringForce * deltaF);
-		GD.Print(_velocity.Length() * 100 *deltaF);
 		if (_velocity.Length() * 100 *deltaF < _minGlideSpeed && direction.Length() < 0.1f)
 		{
-			GD.Print("to slow, stop the player");
 			_velocity = Vector2.Zero;
 		}
 
