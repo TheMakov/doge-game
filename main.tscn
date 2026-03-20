@@ -3,19 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dwalmy7wswxbg" path="res://scripts/Movement.cs" id="2_0xm2m"]
 
-[sub_resource type="Curve" id="Curve_0xm2m"]
-_data = [Vector2(0.002272727, 0.095001996), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_h2yge"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
 [node name="root" type="Node2D" unique_id=1950932389]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1552440115]
-position = Vector2(1035, 403)
+position = Vector2(1004, 372)
+scale = Vector2(0.515625, 0.515625)
 texture = ExtResource("1_ig7tw")
 script = ExtResource("2_0xm2m")
-_accelerationCurve = SubResource("Curve_0xm2m")
-_deccelerationCurve = SubResource("Curve_h2yge")
+_maxSpeed = 3.0
+_deccelTime = 0.15
+_accelTime = 0.2
