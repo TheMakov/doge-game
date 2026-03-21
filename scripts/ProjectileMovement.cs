@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace NewGameProject.scripts;
 
 public partial class ProjectileMovement : Area2D
 {
@@ -7,7 +8,11 @@ public partial class ProjectileMovement : Area2D
 	private float _speed = 10f;
 
 	[Export] 
-	private int _damage = 1;
+	public int Damage = 1;
+	
+	[Export]
+	public float Lifetime = 10f;
+	
 	
 	
 	private float _randomX;
@@ -17,8 +22,8 @@ public partial class ProjectileMovement : Area2D
 	{
 		_randomX = (float)GD.RandRange(-1.0f, 1.0f);
 		_randomY = (float)GD.RandRange(-1.0f, 1.0f);
-		_randomDir = new Vector2(_randomX,_randomY).Normalized();
-		GD.Print(_randomDir);
+		_randomDir = new Vector2(_randomX,_randomY).Normalized(); 
+		_startProjectileLife();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,5 +32,11 @@ public partial class ProjectileMovement : Area2D
 		var deltaF = (float)delta;
 		var deltaPos = _randomDir * deltaF * 100 * _speed;
 		Position += deltaPos;
+	}
+	
+	private async void _startProjectileLife()
+	{
+		await ToSignal(GetTree().CreateTimer(Lifetime), SceneTreeTimer.SignalName.Timeout);
+		QueueFree();
 	}
 }

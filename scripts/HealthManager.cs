@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace NewGameProject.scripts;
 
 public partial class HealthManager : Node
 {
@@ -7,9 +8,17 @@ public partial class HealthManager : Node
 	private int _health = 3;
 	
 	[Signal]
-	public delegate void HealthChangedEventHandler(int oldHealth, int newHealth);
+	public delegate void DamageTakenEventHandler(int damage);
 	
-	private void _takeDamage(int damage){
+	
+
+	public override void _Ready()
+	{
+		DamageTaken += _takeDamage; 
+	}
+	
+	protected void _takeDamage(int damage){
+		GD.Print("damage taken");
 		_health -= damage;
 		if(_health <= 0){
 			GD.Print("game over");

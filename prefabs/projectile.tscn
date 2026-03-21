@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c2va7whk11541"]
+
+[ext_resource type="Script" uid="uid://dyqker8gxi57a" path="res://scripts/ProjectileMovement.cs" id="1_s5n0i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mycd"]
+
+[node name="Projectile" type="Area2D" unique_id=1938563530]
+scale = Vector2(1.745, 1.745)
+script = ExtResource("1_s5n0i")
+_speed = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1755147547]
+shape = SubResource("CircleShape2D_7mycd")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=268525406]
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 9.0
+color = Color(0.7894353, 0.45950115, 0.24424145, 1)
+metadata/_edit_use_anchors_ = true
