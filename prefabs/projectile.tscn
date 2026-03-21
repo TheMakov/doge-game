@@ -5,9 +5,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_7mycd"]
 
 [node name="Projectile" type="Area2D" unique_id=1938563530]
-scale = Vector2(1.745, 1.745)
+scale = Vector2(2.5, 2.5)
 script = ExtResource("1_s5n0i")
-_speed = 0.0
+_speed = 6.0
+Lifetime = 30.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1755147547]
 shape = SubResource("CircleShape2D_7mycd")
@@ -19,3 +20,5 @@ offset_right = 9.0
 offset_bottom = 9.0
 color = Color(0.7894353, 0.45950115, 0.24424145, 1)
 metadata/_edit_use_anchors_ = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
