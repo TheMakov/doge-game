@@ -39,8 +39,10 @@ shape = SubResource("CircleShape2D_0xm2m")
 script = ExtResource("5_lquwl")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=523629883]
-position = Vector2(-1, 0)
+position = Vector2(1, 2)
 script = ExtResource("6_5vw27")
+_cameraSpeed = 2.0
+_maxPlayerCameraDistance = 1.2
 
 [node name="ThreatManager" type="Node" parent="." unique_id=1477020994]
 script = ExtResource("6_7mycd")

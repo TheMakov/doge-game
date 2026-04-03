@@ -64,5 +64,10 @@ public partial class Movement : Godot.Sprite2D
 		await ToSignal(GetTree().CreateTimer(time), SceneTreeTimer.SignalName.Timeout);
 		_playerCanMove = true;
 	}
+
+	public float GetVelocity()
+	{
+		return _velocity.Length();
+	}
 	
 }
