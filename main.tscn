@@ -1,16 +1,23 @@
 [gd_scene format=3 uid="uid://cqow47bch5ocs"]
 
+[ext_resource type="Texture2D" uid="uid://cl06ugc6x1me5" path="res://assets/White_grey_checkerboard.png" id="1_272bh"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dwalmy7wswxbg" path="res://scripts/Movement.cs" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://63v52kp3exg8" path="res://scripts/HitProcessor.cs" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c2va7whk11541" path="res://prefabs/projectile.tscn" id="5_7mycd"]
 [ext_resource type="Script" uid="uid://t7l38t2cep62" path="res://scripts/HealthManager.cs" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://di5mpv6dest60" path="res://scripts/CameraFollowMovement.cs" id="6_5vw27"]
 [ext_resource type="Script" uid="uid://idq62hse1uop" path="res://scripts/ThreatManager.cs" id="6_7mycd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
 radius = 66.05325
 
 [node name="root" type="Node2D" unique_id=1950932389]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=2117033061]
+position = Vector2(1.0000153, 3)
+scale = Vector2(1.3896736, 1.3896736)
+texture = ExtResource("1_272bh")
 
 [node name="Player" type="Sprite2D" parent="." unique_id=1552440115]
 position = Vector2(5.9604645e-08, -1.6940659e-21)
@@ -33,6 +40,7 @@ script = ExtResource("5_lquwl")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=523629883]
 position = Vector2(-1, 0)
+script = ExtResource("6_5vw27")
 
 [node name="ThreatManager" type="Node" parent="." unique_id=1477020994]
 script = ExtResource("6_7mycd")
